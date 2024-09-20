@@ -35,7 +35,6 @@ const getChannelInfo = async (ctx, channelId) => {
     try {
         const channelInfo = await ctx.api.getChat(channelId);
         const memberCount = await ctx.api.getChatMembersCount(channelId);
-        console.log(memberCount);
 
         await ctx.reply(
             `
@@ -80,7 +79,7 @@ const buildChannelsKeyboard = async (name) => {
     const inlineKeyboard = new InlineKeyboard();
 
     for (const channel of channels) {
-        inlineKeyboard.text(channel.channelId, `${name}-${channel.channelId}`);
+        inlineKeyboard.text(channel.channelId, `${name}$${channel.channelId}`);
     }
 
     return inlineKeyboard;
